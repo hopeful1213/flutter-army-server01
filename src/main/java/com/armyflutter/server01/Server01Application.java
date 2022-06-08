@@ -14,8 +14,8 @@ public class Server01Application {
 		return "Hello Spring Boot";
 	}
 	*/
-	public static void main(String[] args) {
-		SpringApplication.run(Server01Application.class, args);
-	}
+//	public static void main(String[] args) {
+//		SpringApplication.run(Server01Application.class, args);
+//	}
 
 }

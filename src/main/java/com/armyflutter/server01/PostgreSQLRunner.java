@@ -31,8 +31,8 @@ public class PostgreSQLRunner implements ApplicationRunner {
                             "ID INTEGER NOT NULL," +             
                             "NAME VARCHAR(255)," +          
                             "PRIMARY KEY(ID))";   
-                statement.executeUpdate(sql);        
+              //  statement.executeUpdate(sql);        
            }       
-            jdbcTemplate.execute("INSERT INTO ACCOUNT VALUES(1, 'saelobi')");  
+         //   jdbcTemplate.execute("INSERT INTO ACCOUNT VALUES(1, 'saelobi')");  
         }
     }

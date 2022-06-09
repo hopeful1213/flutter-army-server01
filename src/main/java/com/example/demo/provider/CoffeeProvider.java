@@ -10,13 +10,19 @@ import graphql.schema.idl.RuntimeWiring;
 import graphql.schema.idl.SchemaGenerator;
 import graphql.schema.idl.SchemaParser;
 import graphql.schema.idl.TypeDefinitionRegistry;
+
+import org.apache.tomcat.util.http.fileupload.FileUtils;
+import org.apache.commons.*;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Component;
+import org.springframework.util.FileCopyUtils;
 
 import javax.annotation.PostConstruct;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.stream.Stream;
 
 @Component
@@ -47,7 +53,13 @@ public class CoffeeProvider implements CoffeeDetails {
 
         loadDataIntoHSQL(); // 데이터 초기화
 
-        File schemaFile = resource.getFile();
+       // File schemaFile = resource.getFile();
+        //File schemaFile = resource.getFile();    도커로 옮기면서 수정
+        InputStream schemaFile = new ClassPathResource("coffees.graphql").getInputStream();  
+        File file2;
+        //FileCopyUtils.copyToByteArray(is);
+        //FileUtils.copyInputStreamToFile(is, file2);
+        //File cc = is. 
         TypeDefinitionRegistry typeRegistry = new SchemaParser().parse(schemaFile);
         RuntimeWiring wiring = RuntimeWiring.newRuntimeWiring()
                 .type("Query", typeWiring -> typeWiring
